@@ -11,14 +11,6 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 
-func print_binary(s []byte) {
-	fmt.Printf("Received b:")
-	for n := 0; n < len(s); n++ {
-		fmt.Printf("%d,", s[n])
-	}
-	fmt.Printf("\n")
-}
-
 func echoHandler(w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
@@ -32,9 +24,9 @@ func echoHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		print_binary(p)
+		fmt.Println(string(p))
 
-		err = conn.WriteMessage(messageType, []byte("Greetings browser"))
+		err = conn.WriteMessage(messageType, p)
 		if err != nil {
 			return
 		}
