@@ -3,17 +3,19 @@
 $(document).ready(function(){
 	var chatSocket = new WebSocket("ws://localhost:8008/ws");
 
+	// TODO: when socket closes, disable chatsend and maybe try to reopen? etc, better error handling
 	chatSocket.onopen = function (event) {
-		chatSocket.send("Example Test sent to the server");
+		$('#chatsend').prop('disabled', false);		
 	};
 
 	chatSocket.onmessage = function (event) {
-		$('#chat').append(event.data+"\n");
+		$('#chat').prepend(event.data+"\n");
 	};
 
 	$('#chatsend').keyup(function(event){
 		if(event.keyCode == 13){
-			chatSocket.send($('#chatsend').value);
+			chatSocket.send($('#chatsend').val());
+			$('#chatsend').val('');
 		}
 	});
 });
