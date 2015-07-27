@@ -6,6 +6,22 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body id='body'>
+	<h1>This is a filler h1 header</h1>
+	<div></div>
+	<input />
+	<div></div>
+		<script>
+		var chatSocket = new WebSocket("ws://localhost:8008");
+
+		chatSocket.onopen = function (event) {
+			chatSocket.send("Example Test sent to the server");
+		};
+
+		chatSocket.onmessage = function (event) {
+			console.log("The server sent a message!");
+			console.log(event);
+		};
+	</script>
 </body>
 </html>
 
