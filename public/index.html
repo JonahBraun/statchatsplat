@@ -4,24 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Stat Chat Splat</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script defer src="http://localhost:8008/script.js"></script>
 </head>
 <body id='body'>
-	<h1>This is a filler h1 header</h1>
-	<div></div>
-	<input />
-	<div></div>
-		<script>
-		var chatSocket = new WebSocket("ws://localhost:8008");
-
-		chatSocket.onopen = function (event) {
-			chatSocket.send("Example Test sent to the server");
-		};
-
-		chatSocket.onmessage = function (event) {
-			console.log("The server sent a message!");
-			console.log(event);
-		};
-	</script>
+	<h1>Stat Chat Splat</h1>
+	<div id='stats'></div>
+	<input type='text'  />
+	<div id='chat'></div>
 </body>
 </html>
 
