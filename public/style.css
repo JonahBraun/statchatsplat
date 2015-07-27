@@ -1,2 +1,6 @@
 body{
 }
+
+#chat{
+	white-space: pre;
+}
