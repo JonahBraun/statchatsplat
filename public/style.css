@@ -1,6 +1,10 @@
 body{
 }
 
+#chat img {
+	max-height: 2.5em;
+}
+
 #chat{
 	white-space: pre;
 }
