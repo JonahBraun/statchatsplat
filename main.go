@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/md5"
 	"fmt"
 	"github.com/gorilla/websocket"
 	"net/http"
@@ -22,7 +23,7 @@ func handleWebsocket(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	name := conn.RemoteAddr().String()
+	avatar := "<img src='https://www.gravatar.com/avatar/" + fmt.Sprintf("%x", md5.New().Sum([]byte(conn.RemoteAddr().String()))) + "?d=monsterid'>"
 	rec := make(chan []byte)
 
 	register <- rec
@@ -51,7 +52,7 @@ func handleWebsocket(w http.ResponseWriter, r *http.Request) {
 			Talk("Websocket read error:", err)
 			return
 		}
-		broadcastChat <- []byte(name + ": " + string(p))
+		broadcastChat <- []byte(avatar + string(p))
 	}
 }
 
