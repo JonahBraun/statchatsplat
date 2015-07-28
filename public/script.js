@@ -18,5 +18,8 @@ $(document).ready(function(){
 			$('#chatsend').val('');
 		}
 	});
+
+	// TODO: this should be working but it's not
+	$('#chatsend').focus();
 });
 
