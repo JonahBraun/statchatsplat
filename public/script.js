@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function(){
-	var chatSocket = new WebSocket("ws://localhost:8008/ws");
+	var chatSocket = new WebSocket("ws://"+document.location.host+"/ws");
 
 	// TODO: when socket closes, disable chatsend and maybe try to reopen? etc, better error handling
 	chatSocket.onopen = function (event) {
